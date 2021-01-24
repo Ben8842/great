@@ -1,6 +1,31 @@
 import "./App.css";
 import React, { Component } from "react";
 
+function Createbuttons(props) {
+  const elements = [];
+  var y = props.name;
+  console.log(y);
+  var x;
+  for (x = 0; x < props.name; x++) {
+    elements.push(
+      <div>
+        <button>HELLO</button>
+      </div>
+    );
+  }
+
+  console.log({ elements });
+  const boating = (
+    <ul>
+      {elements.map((value, index) => {
+        return <li key={index}>{value}</li>;
+      })}
+    </ul>
+  );
+
+  return boating;
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -27,14 +52,6 @@ class App extends Component {
     this.incrementCount();
   }
 
-  createbuttons() {
-    return (
-      <div>
-        Hello creation<button>CREATE</button>
-      </div>
-    );
-  }
-
   render() {
     var { flag, count, arry } = this.state;
 
@@ -43,8 +60,6 @@ class App extends Component {
         {flag} {count} {arry}
       </div>
     );
-
-    const creation = this.createbuttons();
 
     return (
       <div>
@@ -55,7 +70,7 @@ class App extends Component {
         </button>
         <button onClick={() => this.reset()}>RESET</button>
 
-        {creation}
+        <Createbuttons name={count} id="bots" class="fancy" />
       </div>
     );
   }
