@@ -1,6 +1,36 @@
 import "./App.css";
 import React, { Component } from "react";
 
+function hellofunction() {
+  console.log("hello");
+}
+
+function goodbyefunction() {
+  console.log("good bye");
+}
+
+function Morebuttons(props) {
+  const elements = [];
+  var y = props.name * 2;
+  var x;
+  for (x = 0; x < y; x++) {
+    elements.push(
+      <span>
+        <button>boom {props.name}</button>
+      </span>
+    );
+  }
+  const booming = (
+    <span>
+      {elements.map((value, index) => {
+        return <span key={index}>{value}</span>;
+      })}
+    </span>
+  );
+
+  return booming;
+}
+
 function Createbuttons(props) {
   const elements = [];
   var y = props.name;
@@ -8,21 +38,21 @@ function Createbuttons(props) {
   var x;
   for (x = 0; x < props.name; x++) {
     elements.push(
-      <div>
-        <button>HELLO </button>
+      <span>
+        <button onClick={() => hellofunction()}>HELLO </button>
 
-        <button>GoodBye </button>
-      </div>
+        <button onClick={() => goodbyefunction()}>GoodBye </button>
+      </span>
     );
   }
 
   console.log({ elements });
   const boating = (
-    <div>
+    <span>
       {elements.map((value, index) => {
-        return <p key={index}>{value}</p>;
+        return <span key={index}>{value}</span>;
       })}
-    </div>
+    </span>
   );
 
   return boating;
@@ -96,6 +126,13 @@ class App extends Component {
           name={count}
           id="bots"
           class="fancy"
+          flag={flag}
+          box={arry}
+        />
+        <Morebuttons
+          name={count}
+          id="tots"
+          class="regular"
           flag={flag}
           box={arry}
         />
