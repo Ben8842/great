@@ -9,18 +9,20 @@ function Createbuttons(props) {
   for (x = 0; x < props.name; x++) {
     elements.push(
       <div>
-        <button>HELLO</button>
+        <button>HELLO </button>
+
+        <button>GoodBye </button>
       </div>
     );
   }
 
   console.log({ elements });
   const boating = (
-    <ul>
+    <div>
       {elements.map((value, index) => {
-        return <li key={index}>{value}</li>;
+        return <p key={index}>{value}</p>;
       })}
-    </ul>
+    </div>
   );
 
   return boating;
@@ -34,6 +36,13 @@ class App extends Component {
       count: 1,
       arry: [5, 6, 7],
     };
+  }
+
+  flip() {
+    this.setState({ flag: false });
+  }
+  flipO() {
+    this.setState({ flag: true });
   }
 
   reset() {
@@ -61,6 +70,18 @@ class App extends Component {
       </div>
     );
 
+    const flaggingTrue = (
+      <div>
+        <button onClick={() => this.flip()}>Flag Flip is true</button>
+      </div>
+    );
+
+    const flaggingFalse = (
+      <div>
+        <button onClick={() => this.flipO()}>Flag Flip is false</button>
+      </div>
+    );
+
     return (
       <div>
         {training}
@@ -69,8 +90,15 @@ class App extends Component {
           This is only the beginning {count}
         </button>
         <button onClick={() => this.reset()}>RESET</button>
+        {flag ? flaggingTrue : flaggingFalse}
 
-        <Createbuttons name={count} id="bots" class="fancy" />
+        <Createbuttons
+          name={count}
+          id="bots"
+          class="fancy"
+          flag={flag}
+          box={arry}
+        />
       </div>
     );
   }
