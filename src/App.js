@@ -1,25 +1,64 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { Component } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      flag: false,
+      count: 1,
+      arry: [5, 6, 7],
+    };
+  }
+
+  reset() {
+    this.setState((state) => {
+      return { count: 1 };
+    });
+  }
+
+  incrementCount() {
+    this.setState((state) => {
+      return { count: state.count + 1 };
+    });
+  }
+
+  learning() {
+    this.incrementCount();
+  }
+
+  createbuttons() {
+    return (
+      <div>
+        Hello creation<button>CREATE</button>
+      </div>
+    );
+  }
+
+  render() {
+    var { flag, count, arry } = this.state;
+
+    const training = (
+      <div>
+        {flag} {count} {arry}
+      </div>
+    );
+
+    const creation = this.createbuttons();
+
+    return (
+      <div>
+        {training}
+
+        <button onClick={() => this.learning()}>
+          This is only the beginning {count}
+        </button>
+        <button onClick={() => this.reset()}>RESET</button>
+
+        {creation}
+      </div>
+    );
+  }
 }
 
 export default App;
